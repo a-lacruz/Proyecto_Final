@@ -1,0 +1,10 @@
+{% extends 'mvlcblog/base.html' %}
+
+{% block contenido %}
+<h3>Confirma que quiere borrar el post?? {{object.titulo}}</h3>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="SI">
+</form>
+{% endblock %}

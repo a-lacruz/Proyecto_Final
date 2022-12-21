@@ -1,0 +1,18 @@
+{% extends "mvlcblog/base.html" %}
+
+{% block contenido %}
+<a href="{% url 'mvlcblog-crear' %}">Crear Post</a>
+<ul>
+{% for post in object_list %}
+    <li>
+        {{post.publicado_el}} - - {{post.titulo}}
+        {% if user.is_superuser %}
+        <a href="{% url 'mvlcblog-borrar' post.id %}">Borrar</a>
+        <a href="{% url 'mvlcblog-actualizar' post.id %}">Actualizar</a>
+        {% endif %}
+        <a href="{% url 'mvlcblog-detalle' post.id %}">Ver</a>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
+    
